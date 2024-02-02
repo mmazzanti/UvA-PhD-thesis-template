@@ -1,0 +1,33 @@
+%*******************************************************
+% Publications
+%*******************************************************
+\pdfbookmark[1]{Publications}{publications}
+\chapter*{List of publications}
+
+\noindent
+\textbf{Publications forming the content of this thesis:}
+\begin{refsection}[ownpubs]
+  \small%
+  \boldname{Surname}{Name}{}
+  \nocite{*}
+  \printbibliography[heading=none,type=article]
+\end{refsection}
+
+\textbf{Further publications:}
+\begin{refsection}[otherownpubs]
+	\DeclareFieldFormat{labelnumber}{%
+		\ifinteger{#1}
+		{\number\numexpr#1+2\relax}
+		{#1}}
+	\boldname{Surname}{Name}{}
+	\nocite{*}
+	\printbibliography[heading=none,type=article, resetnumbers=false]
+\end{refsection}
+
+\textbf{My contribution to these publications:}
+\begin{enumerate}
+	\item[1.] I did complain a lot but helped a bit.
+	\item[2.] I did bring coffee.
+	\item[3--4.] I helped in finding the printer location.
+	\item[5--6.] I cheered the mood up.
+\end{enumerate}

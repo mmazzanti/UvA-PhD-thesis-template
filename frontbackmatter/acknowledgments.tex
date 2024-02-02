@@ -1,0 +1,30 @@
+%*******************************************************
+% Acknowledgments
+%*******************************************************
+
+\refstepcounter{dummy}
+\manualmark%
+\addcontentsline{toc}{chapter}{Acknowledgements}
+\pdfbookmark[1]{Acknowledgements}{acknowledgements}
+
+\bigskip
+
+\begingroup
+\let\clearpage\relax
+\let\cleardoublepage\relax
+\let\cleardoublepage\relax
+\chapter*{Acknowledgements}
+
+\def\thanks#1{%
+\begingroup
+\leftskip1em
+\noindent #1
+\par
+\endgroup
+}
+
+\lipsum[1-2]
+
+
+\endgroup
+

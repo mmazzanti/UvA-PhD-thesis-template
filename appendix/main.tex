@@ -1,0 +1,123 @@
+\chapter{Tensor calculus}
+\label{app:Tensors}
+
+%\section{Tensor Calculus}
+The tensor polarizability described in Chapter~\ref{ch:chapter-2} is based on tensor algebra. This section will cover the basis tensor operations needed to obtain the equations defined in Sec.~\ref{sec:Tensor_pol}.
+
+We start by defining the three orthogonal versors in the spherical basis as $\hat{e}_{q}$ with $q=-1,0,1$.
+The matrix for a change of basis from Cartesian to spherical is:
+\begin{align}
+	\mathcal{T}_{\mathrm{car\rightarrow spher}} =  \left[\begin{matrix}
+		\frac{-1}{\sqrt2}& \frac{i}{\sqrt2}& 0 \\
+		0&0&1\\
+		\frac{1}{\sqrt2}& \frac{i}{\sqrt2}& 0
+	\end{matrix} \right].
+\end{align}
+The usual scalar product between two vectors in a spherical basis is:
+\begin{equation}
+	\mathbf{X}\cdot\mathbf{Y} = \sum\limits_{m}X^mY_m= \sum\limits_{m}X_mY^m=\sum\limits_{m}\left(-1\right)^mX_mY_{-m},%=\sum\limits_{m}\left(-1\right)^mX^mY^{-m}
+	\label{eq:scalar_prod_sph}
+\end{equation}
+where $m=-1,0,1$. Notice that when using a spherical basis we have to keep in mind the clear distinction between covariant an contravariant vectors as the basis versors obey the following orthogononality relations:
+\begin{equation}
+	\mathbf{e}_{m_1}\cdot\mathbf{e}^{m_2} = \mathbf{e}_{m_1}\cdot\mathbf{e}_{m_2}^*= \delta_{m_1,m_2}.
+	\label{eq:orthog_rel_sph}
+\end{equation}
+Combining Eq.~\eqref{eq:scalar_prod_sph} with Eq.~\eqref{eq:orthog_rel_sph} for a general vector $\mathbf{V}$ expressed in Cartesian coordinates $V_m=\hat{e}_m\cdot\mathbf{V}$ we obtain:
+\begin{align}
+	\mathbf{V}=\sum\limits_m \left(-1\right)^mV_m\mathbf{e}_m=\sum\limits_mV_m\mathbf{e}^*_m.
+	\label{eq:vector_cart_sph}
+\end{align}
+The definitions obtained so can be extended to vector operators that can be expressed in spherical coordinates as shown in Eq.~\eqref{eq:vector_cart_sph} with $V_m \rightarrow \hat{V}_m$.
+\section{Tensors operators}
+So far we limited our treatment to one dimensional (vector) objects. We can extend these definitions to other dimensions greater than one known as spherical tensors.
+
+A spherical tensor is a mathematical object used to describe physical quantities that exhibit rotational symmetry. It is a generalization of a tensor to the spherical coordinate system, which is suitable for describing phenomena that are invariant under rotations in three-dimensional space as, for example, the transition dipole elements involved in the polarizabilities calculations of Sec.~\ref{sec:Tensor_pol}.
+
+It is often useful to express tensors in terms of their \emph{irreducible representations}. Each rank-K irreducible tensor consists of $2K+1$ components, corresponding to different orientations in space.
+
+An irreducible tensor operator transforms under rotations of coordinate systems the same way as the eigenfunctions of the angular momentum would do:
+\begin{align}
+	\left[J_z,T^{\left(K\right)}_M\right] &= \hbar M T^{\left(K\right)}_M\nonumber\\
+	\left[J_{\pm},T^{\left(K\right)}_M\right] &= \sqrt{\left(K\pm M+1\right)\left(k\mp M\right)}T^{\left(K\right)}_M,
+\end{align}
+where $J_z, J_{\pm}$ are respectively the z-rotation operator and the ladder operators on the angular-momentum eigenstates.
+
+
+Analogous to what we did for vectors we can define a scalar product between irreducible tensors of rank $K$ as :
+\begin{align}
+	\left(R^{\left(K\right)}\cdot T^{\left(K\right)}\right) &= \sum\limits_M R^{\left(K\right)}_M \left(T^{\left(K\right)}_{M}\right)^\dagger = \sum\limits_M R^{\left(K\right)}_M T_{\left(K\right),M}\nonumber\\
+	&= \sum\limits_M\left(-1\right)^{-M} R^{\left(K\right)}_M T_{\left(K\right),-M},
+	\label{eq:tensor_prod}
+\end{align} 
+where the $M$ index runs on the $-M<K<M$ components of the tensor and we have defined the covariant component of the tensor $T^{\left(K\right)}$ as $T_{\left(K\right),M}$ in analogy to the components of a vector operator. The phase  in Eq.~\eqref{eq:tensor_prod} was chosen such that it coincides with the usual one used for spherical harmonics.
+
+Starting from two tensors $X^{\left(K_1\right)}$ and $X^{\left(K_2\right)}$ of rank $K_1$ and $K_2$ we can define an \emph{irreducible tensor product} as:
+\begin{align}
+	T^{\left(K\right)}_M = \sum\limits_{m_1,m_2}\mathcal{C}^{K,M}_{K_1, m_1,K_2,m_2}X^{\left(K_1\right)}Y^{\left(K_2\right)},
+	\label{eq:irred_tens_prod}
+\end{align}
+where $\mathcal{C}^{K,M}_{K_1, m_1,K_2,m_2}$ are the Clebsch–Gordan coefficients. The irreducible tensor product is often referred to as $T^{\left(K\right)} \equiv \left\{X^{\left(K_1\right)}\otimes Y^{\left(K_2\right)}\right\}_K$. The product of two irreducible tensors is generally not irreducible, we can however decompose the product as a sum of irreducible tensors $T^{\left(K\right)}$ as:
+\begin{align}
+	X^{\left(K_1\right)}_{m_1}Y^{\left(K_2\right)}_{m_2} = \sum\limits_{K = \lvert K_1 - K_2\rvert}^{K_1+K_2}\mathcal{C}^{K,M}_{K_1, m_1,K_2,m_2}T^{\left(K\right)}_M.
+	\label{eq:irrep_tensor_prod}
+\end{align}
+
+\section{Irreducible tensors in second order perturbation theory}
+
+Following the derivations of Chapter~\ref{ch:chapter-2} in order to evaluate the second order AC Stark shift we have to compute the objects of the following form\cite{Rosenbusch:2009}: 
+\begin{align}
+	\frac{\hat{H}_{\mathrm{AC}}}{E_i - \hat{H}_0\pm \omega} = \left(\boldsymbol{\epsilon}\cdot\mathbf{d}\right)^*\frac{1}{E_i - \hat{H}_0\pm \omega}\left(\boldsymbol{\epsilon}\cdot\mathbf{d}\right),
+\end{align}
+Where $\boldsymbol{\epsilon}$ and $\mathbf{d}$ are two rank-1 tensors. Expanding the dot product in a spherical basis we obtain:
+\begin{align}
+	\frac{\hat{H}_{\mathrm{AC}}}{E_i - \hat{H}_0\pm \omega} = \frac{1}{E_i - \hat{H}_0\pm \omega} \sum\limits_{m_1,m_2} \epsilon^*_{m_1}\epsilon_{m_2}d^{m_1}d^{m_2},
+	\label{eq:red_acShift}
+\end{align}
+where we used the fact that $d_m^* = d_m$.
+
+As explained in the previous section the product of two rank-1 tensors can be written as a sum of irreducible tensors of rank $K=0,1,2$. The operator can then be expressed as:
+\begin{align}
+	\frac{\hat{H}_{\mathrm{AC}}}{E_i - \hat{H}_0\pm \omega} &= \sum\limits_{K=0,1,2}\left\{\boldsymbol{\epsilon}^* \otimes \boldsymbol{\epsilon}\right\}_K\cdot \left\{\frac{\mathbf{d}\otimes\mathbf{d}}{E_i - \hat{H}_0\pm \omega} \right\}_K. %\nonumber\\
+	%\frac{\hat{H}_{\mathrm{AC}}}{E_i - \hat{H}_0\pm \omega} & =\sum\limits_{K=0,1,2}
+	\label{eq:pert_th_operator}
+\end{align}
+Making use of Eq.~\eqref{eq:irred_tens_prod} we can expand the two terms on the r.h.s. as:
+\begin{align}
+	\left\{\boldsymbol{\epsilon}\otimes \boldsymbol{\epsilon}\right\}_K &= \sum\limits_{m_1,m_2} \mathcal{C}^{K,M}_{1, m_1,1,m_2}\epsilon^*_{m_1}\epsilon_{m_2}, \\
+	\left\{\frac{\mathbf{d}\otimes \mathbf{d}}{E_i - \hat{H}_0\pm \omega}\right\}_K &= \frac{1}{E_i - \hat{H}_0\pm \omega} \sum\limits_{m'_1,m'_2} \mathcal{C}^{K,M}_{1, m'_1,1,m'_2}d_{m'_1}d_{m'_2}.
+\end{align}
+Making use of Eq.~\eqref{eq:tensor_prod} we can expand the product of irreducible tensors components of Eq.~\eqref{eq:pert_th_operator}:
+\begin{align}
+	\frac{\hat{H}_{\mathrm{AC}}}{E_i - \hat{H}_0\pm \omega} &=\sum\limits_{K=0,1,2}\sum_M \sum\limits_{m_1,m_2} \sum\limits_{m'_1,m'_2}\mathcal{C}^{K,M}_{1, m_1,1,m_2} \left(\mathcal{C}^{K,M}_{1, m'_1,1,m'_2}\right)^* \times \nonumber\\
+	&\times\epsilon^*_{m_1}\epsilon_{m_2}\frac{1}{E_i - \hat{H}_0\pm \omega} d^{m'_1}d^{m'_2}.
+	\label{eq:irrep_acShift}
+\end{align}
+Using the orthogonality relation of the Clebsch-Gordan coefficients:
+\begin{align}
+	\sum_K\sum_M\mathcal{C}^{K,M}_{1, m_1,1,m_2} \left(\mathcal{C}^{K,M}_{1, m'_1,1,m'_2}\right)^* &= \sum_K\sum_M\bra{KM}\ket{11m_1m_2}\bra{11m'_1m'_2}\ket{KM}\nonumber\\
+	&=\delta_{m_1,m_1'}\delta_{m_2,m_2'},
+\end{align}
+Eq.~\eqref{eq:irrep_acShift} reduces to Eq.~\eqref{eq:red_acShift} as expected. Finally, if $\mathbf{d}$ and $\boldsymbol{\epsilon}$ are two operators, as in the case treated in Chapter~\ref{ch:chapter-2} of this thesis, the proof holds as long as $\left[\mathbf{d},\boldsymbol{\epsilon}\right]=0$. 
+
+\section{$\vec{E}$ tensor representation}
+\label{app:E_field_tens}
+In order to obtain an expression for the total polarization we have to express the electric field polarization tensor $\left\{\boldsymbol{\epsilon}^* \otimes \boldsymbol{\epsilon}\right\}_K$ in terms of its irreducible terms. To do that is, as usual, convenient to work in a spherical basis where the polarization vector can be expanded as $\boldsymbol{\epsilon}_{S} = \epsilon_{-1} \hat{e}_{-1} + \epsilon_{0}\hat{e}_{0} + \epsilon_{1} \hat{e}_{1}$ with:
+\begin{align}
+	\hat{e}_{q} = \mathcal{T}_{\mathrm{car\rightarrow spher}}\cdot \hat{e}_{k},
+\end{align}
+where $\hat{e}_{k}$ composes the usual Cartesian basis with $k = x,y,z$.
+
+Notice that in this basis $\boldsymbol{\epsilon}_S$ = $\boldsymbol{\epsilon}$ for a linearly polarized beam along the $z$-direction. As the $z$-axis is often chosen to be the quantization one can identify the three orthogonal component of $\hat{\epsilon}_S$ respectively as the usual $\sigma_-$, $\pi$ and $\sigma_+$  transitions components.
+
+In this basis we find the scalar, vector and tensor components to be, respectively:
+\begin{align}
+\left\{\boldsymbol{\epsilon}^* \otimes \boldsymbol{\epsilon}\right\}^{\left(0\right)}_0 &= \frac{1}{\sqrt{3}},\nonumber\\
+\left\{\boldsymbol{\epsilon}^* \otimes \boldsymbol{\epsilon}\right\}^{\left(1\right)}_m &=-\frac{\sin\left(2\theta\right)}{\sqrt2}\delta_{m,0},\nonumber\\
+\left\{\boldsymbol{\epsilon}^* \otimes \boldsymbol{\epsilon}\right\}^{\left(2\right)}_m &= -\frac{1}{\sqrt{6}}\delta_{m,0}+\frac{1}{2}\cos\left(2\theta\right)\delta_{m,\pm2}, 
+\end{align}
+where the angle $\theta$ refers to the degree of linear $l = \cos\left(2\theta\right)$ and circular $C=\sin\left(2\theta\right)$ polarization on the plane perpendicular to the direction of propagation of light. In case the quantization axis is chosen to be along the $z$-direction, as is convenient to do in the absence of a magnetic field the polarization is given by $\boldsymbol{\epsilon} = \mathbf{e}_x\cos\theta + i\mathbf{e}_y\sin\theta$. For a more general choice of quantization axis one has to first project the polarization vector on the plane perpendicular to the magnetic $\mathbf{B}$ field direction defined by $\theta_k$. The remaining component of polarization in the direction parallel to $\mathbf{B}$ will instead give rise to a $\pi$-polarized contribution.
+
+%This is consistent to our choice of quantization axis along $\vec{z}$ which we have also chosen as the propagation direction of the laser ($\vec{k}\parallel \vec{z}$). In this way the polarization on the perpendicular plane is given by $\boldsymbol{\epsilon} = \mathbf{e}_x\cos\theta + i\mathbf{e}_y\sin\theta$.
+
+%Finally, is worth noticing that all the three irreducible tensors are diagonal besides an off-diagonal term $M'= M\pm2$ in the tensor component. %\red{TODO: There is a reason why this term is dicarded "In practice, a quantizing B-field is applied along the propagation of the laser wave, and as long as the off-diagonal coupling is much smaller than the Zeeman intervals, it can be disregarded." but I don't understand it fully} 

@@ -1,0 +1,420 @@
+% File encoding
+\usepackage[utf8]{inputenc}
+
+% Languages
+\usepackage[main=english]{babel}
+
+% classicthesis setup
+\PassOptionsToPackage{%
+  %drafting,%
+  dottedtoc,
+  eulerchapternumbers,
+  %listings,%
+  %parts,%
+  floatperchapter, pdfspacing,%
+  beramono,%
+  palatino=false,
+  %minionprospacing,
+  %subfig,%
+  %eulermath,%
+  b5paper,%
+}{classicthesis}
+
+% Meta
+\input{preamble/meta}
+
+% Hyphenation
+\input{preamble/hyphenation}
+
+% Finetuning
+\newcounter{dummy}
+\newlength{\abcd}
+
+% Common abbreviations
+\newcommand{\ie}{i.\,e.\xspace}
+\newcommand{\Ie}{I.\,e.\xspace}
+\newcommand{\eg}{e.\,g.\xspace}
+\newcommand{\Eg}{E.\,g.\xspace}
+
+
+
+% A command for inner product and bras and kets
+
+% Various bracketing commands
+\newcommand{\of}[1]{\!\left(#1\right)}
+\newcommand{\sqof}[1]{\left[#1\right]}
+\newcommand{\cuof}[1]{\left\{#1\right\}}
+
+%Commands for Yb notations
+\newcommand{\Yb}[1]{$^{#1}\mathrm{Yb}^+$}
+% use "delimited" macros (e.g. with / at the end) as an alternative. The main advantage of \naive/ is that an error message will occur if you happen to forget the closing slash. (https://tex.stackexchange.com/questions/25820/no-space-following-macro-without-argument)
+\newcommand{\yb}{}% To make sure that \naive isn't already defined    
+\def\yb/{$\mathrm{Yb}^+$}
+
+
+% Biblatex
+\input{preamble/biblatex}
+
+% Redefine cite command to include space before
+% <http://tex.stackexchange.com/questions/11602/>
+\let\origcite\cite%
+\def\cite#1{\unskip~\origcite{#1}}
+
+% Math stuff
+\usepackage{amsmath}
+%\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{isomath}
+
+% Figures, tables, and captions
+\usepackage{tabularx}
+\usepackage{ltablex}
+\setlength{\extrarowheight}{3pt}
+\newcommand{\tableheadline}[1]{\multicolumn{1}{c}{\spacedlowsmallcaps{#1}}}
+\newcommand{\myfloatalign}{\centering}
+\usepackage{floatrow}
+\usepackage{caption}
+\captionsetup{format=hang,font=small,labelfont={sc},margin=5pt}
+\usepackage{subcaption}
+\captionsetup[sub]{margin=0pt,font=small,labelfont={rm}}
+
+
+
+% Blind text
+%\usepackage{blindtext}
+\usepackage{comment}
+
+% Hyperref
+\usepackage[dvipsnames]{xcolor}
+\usepackage[%
+  hyperfootnotes=false,%
+  pdfpagelabels,%
+  % pdfa,%
+  %pdftex,colorlinks=false
+]{hyperref}
+\usepackage{hyperxmp}
+%\pdfcompresslevel=9
+%\pdfadjustspacing=1
+\hypersetup{%
+  %pdfstartpage=3, pdfstartview=FitV,%
+  % following line: colored links (web version)
+  colorlinks=false, linktocpage=true,%
+  % following line: all links in black (for printing)
+  %colorlinks=false, linktocpage=false, pdfborder={0 0 0},%
+  breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
+  plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
+  hypertexnames=true, pdfhighlight=/O,%nesting=true,%frenchlinks,%
+  pdftitle={\myPlainTitle},%
+  pdfauthor={\myName},%
+  pdfcopyright={Copyright (C) \myTime, \myName},%
+  pdfsubject={},%
+  pdfkeywords={},%
+  pdflang={en},%
+}
+
+% Graphics
+\usepackage{graphicx}
+\usepackage{rotating}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usetikzlibrary{shapes.geometric}
+
+% Circled numbers
+\newcommand*\circled[1]{
+  \tikz[baseline=(char.base)]{
+    \node[shape=circle,draw,inner sep=1pt,font=\footnotesize,%
+          minimum size=0.8\baselineskip] (char) {\figureversion{lining}#1};
+  }
+}
+
+% This for the chemical formulas used in the gold plating section
+\usepackage{chemformula}
+
+% \tikzexternalize
+% \tikzsetexternalprefix{externalized/}
+
+% Autoreferences
+\renewcommand*{\figureautorefname}{Figure}
+\renewcommand*{\tableautorefname}{Table}
+\renewcommand*{\partautorefname}{Part}
+\renewcommand*{\chapterautorefname}{Chapter}
+\renewcommand*{\sectionautorefname}{Section}
+\renewcommand*{\subsectionautorefname}{Section}
+\renewcommand*{\subsubsectionautorefname}{Section}
+\providecommand{\subfigureautorefname}{\figureautorefname}%
+\usepackage{cleveref}
+
+% Acronyms
+\PassOptionsToPackage{printonlyused}{acronym}
+\usepackage{acronym}
+
+% List items
+\usepackage{enumitem}
+
+% Load classicthesis style
+\usepackage{scrhack}
+\usepackage{classicthesis}
+%\usepackage{lmodern}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+% Customize text width and length
+
+\KOMAoptions{headinclude=true,footinclude=false}
+%\setlength{\textwidth}{10.5cm} % 9 pt font
+\setlength{\textwidth}{13cm} % 10 pt font
+% text height set by golden ratio
+\areaset[current]{\textwidth}{1.618034\textwidth}
+
+% Page numbers in plain style (chapter titles)
+%\clearscrplain
+\clearplainofpairofpagestyles
+\ofoot[\pagemark]{}
+% Adjust distance to footer (default is too large)
+\setlength{\footskip}{19pt}
+
+%
+% Font setup
+%
+
+
+% Micro-typographic extensions
+%\usepackage[protrusion=true,expansion=true]{microtype}
+
+% Use Minion Pro
+%\usepackage[
+%  mathlf, % lining figures
+%]{MinionPro}
+%\linespread{1.06}
+
+%
+% Customize colors
+%
+\definecolor{chapter-color}{cmyk}{1, 0.50, 0, 0.25}
+\definecolor{link-color}{cmyk}{1, 0.50, 0, 0.25}
+\definecolor{cite-color}{cmyk}{0, 0.7, 0.9, 0.2}
+
+% Hyperref
+\usepackage{bookmark}
+\hypersetup{
+  %urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webgreen, %pagecolor=RoyalBlue,%
+  %urlcolor=webbrown, linkcolor=Maroon, citecolor=webgreen,%
+  %urlcolor=link-color, linkcolor=link-color, citecolor=cite-color,%
+  urlcolor=Black, linkcolor=Black, citecolor=Black, %pagecolor=Black,%
+}
+
+% Chapter font
+\let\chapterNumber\undefined%
+\newfont{\chapterNumber}{eurb10 scaled 5500}
+%\newfont{\chapterNumber}{MinionPro-Regular-lf-t1 scaled 5500}
+
+% SI units
+\usepackage{siunitx}
+\sisetup{
+  separate-uncertainty,
+  %repeatunits=false,
+  detect-family,
+  unit-mode=text,
+}
+\DeclareSIUnit\au{a.u.}
+\let\u=\SI%
+\newcommand{\angstrom}{\text{\normalfont\AA}}
+% Product type codes
+\newcommand{\productcode}[1]{\figureversion{lining}#1}
+
+% TOC
+\renewcommand{\cftpartfont}{\color{chapter-color}\normalfont}%
+\renewcommand{\cftpartpagefont}{\normalfont}%
+
+% Chapter number on inside
+\definecolor{chapternumbercolor}{rgb}{0.501961, 0.807843, 0.843137}
+\titleformat{\chapter}[display]%
+  {\relax}{\vspace*{-3\baselineskip}\makebox[\linewidth][r]{\color{chapternumbercolor}\chapterNumber\thechapter}}{10pt}%
+  {\raggedright\spacedallcaps}[\normalsize\vspace*{.8\baselineskip}\titlerule]%
+
+% Chapter abstract
+\def\chapterabstract#1{%
+  \begingroup
+  \baselineskip1.3em
+  \leftskip1em
+  \rightskip\leftskip\itshape#1
+  \par
+  \endgroup
+}
+
+% Chapter quotes
+% Adapted from: <http://tex.stackexchange.com/questions/53377/inspirational-quote-at-start-of-chapter>
+\setkomafont{dictumtext}{\itshape\small}%
+\setkomafont{dictumauthor}{\normalfont}
+\renewcommand*{\dictumwidth}{0.6\textwidth}
+\renewcommand*{\dictumrule}{}
+\renewcommand*\dictumauthorformat[1]{--- #1}
+%\renewcommand{\vec}{\bs}
+%\newcommand{\kk}{\vec{k}}
+
+
+% Subfigure labels (manual)
+%\newcommand{\subfig}[1]{#1)}
+\newcommand{\subfig}[1]{(#1)}
+
+% CV
+\newcommand{\cvleft}[1]{\begin{minipage}[t]{2.5cm}\begin{flushright}#1\end{flushright}\end{minipage}\hspace{5mm}}
+\newcommand{\cvright}[1]{\begin{minipage}[t]{8cm}{#1}\end{minipage}}
+
+% Footnote without number
+\newcommand\blfootnote[1]{%
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+% Put pages on A4 w/ crop marks
+%\usepackage[a4,center,cam]{crop}
+
+% Widow and club penalties
+\clubpenalty = 10000
+\widowpenalty = 10000
+%\displaywidowpenalty = 10000
+
+%stuff coming from the papers
+\usepackage{bm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{listings}
+%\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{multirow}
+%\usepackage{psfrag}
+%\usepackage{bm}
+%\usepackage[all]{xy}
+\usepackage{braket}
+%\usepackage[pdftex,colorlinks=false]{hyperref}
+%\usepackage{xcolor}
+\usepackage{verbatim}
+%\usepackage{float}
+%\usepackage{morefloats}%needed to make marginpar behave
+%\newcommand{\todo}[1]{$ \color{red} ^{\clubsuit}$ \marginpar{  {\color{red} $ \clubsuit $ \color{black}} \tiny   #1 \color{black}  }}
+%\lstloadlanguages{Matlab}
+\usepackage{times}
+\usepackage{array, makecell}
+\usepackage[export]{adjustbox}
+
+
+
+% Handy packages
+\usepackage{csquotes}  % smart quotes
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+
+
+\usepackage{xspace}
+\usepackage{textcomp}
+\usepackage{mparhack}
+\usepackage{relsize}
+%\usepackage[pdftex,colorlinks=false]{hyperref}
+%\usepackage{xcolor, colortbl}
+\usepackage{colortbl}
+\newcommand{\todo}[1]{$ \color{red} ^{\clubsuit}$ \marginpar{  {\color{red} $ \clubsuit $ \color{black}} \tiny   #1 \color{black}  }}
+
+
+
+
+
+% boldsymbol (requires amsmath)
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+
+\newcommand{\red}[1]{{\textcolor{red}{#1}}}
+\newcommand{\blue}[1]{{\textcolor{blue}{#1}}}
+\newcommand{\magenta}[1]{{\textcolor{magenta}{#1}}}
+\newcommand{\green}[1]{{\textcolor[rgb]{0,0.5,0}{#1}}}
+
+
+% A command for inner product and bras and kets
+
+% Various bracketing commands
+%\newcommand{\of}[1]{\!\left(#1\right)}
+%\newcommand{\sqof}[1]{\left[#1\right]}
+%\newcommand{\cuof}[1]{\left\{#1\right\}}
+
+
+
+% commutator and anticommutator
+\newcommand{\comm}[2]{\left[#1,#2\right]}
+\newcommand{\anticomm}[2]{\left\{#1,#2\right\}}
+
+% 1/2
+\newcommand{\half}{$\frac{1}{2}$ }
+% simplifies using the up and down arrows to denote spin
+\newcommand{\up}{\uparrow}
+\newcommand{\dw}{\downarrow}
+% Theta function
+\newcommand{\tfunc}{\vartheta_1}
+% notation for vacuum, an empty set inside a ket
+\newcommand{\vac}{\left|\,0\,\right\rangle}
+% Absolute value
+\newcommand{\abs}[1]{\left|#1\right|}
+
+% Roman functions for real and imaginary parts
+\newcommand{\re}{\mathrm{Re}}
+\newcommand{\im}{\mathrm{Im}}
+
+% Sets of up-spin and down-spin locations
+\newcommand{\bket}{\left\{z_1 \cdots z_{\num}\right\}}
+\newcommand{\wket}{\left\{w_1 \cdots w_{\num}\right\}}
+
+%Expectation values
+\newcommand{\expect}[1]{\left\langle#1\right\rangle}
+
+% reference with parenthesis
+\newcommand{\pref}[1]{(\ref{#1})}
+
+
+%sign function
+\DeclareMathOperator{\sign}{sign}
+\usepackage{bbm}
+
+%package for strike-out text (not needed in final version)
+\usepackage{ulem}
+% this is needed for the usual \emph text (not underlined but italic)
+\normalem
+
+
+
+% This part to make some authors bold (the thesis author in the list of publications at the beginning)
+\def\makenamesetup{%
+	\def\bibnamedelima{~}%
+	\def\bibnamedelimb{ }%
+	\def\bibnamedelimc{ }%
+	\def\bibnamedelimd{ }%
+	\def\bibnamedelimi{ }%
+	\def\bibinitperiod{.}%
+	\def\bibinitdelim{~}%
+	\def\bibinithyphendelim{.-}}    
+\newcommand*{\makename}[2]{\begingroup\makenamesetup\xdef#1{#2}\endgroup}
+
+\newcommand*{\boldname}[3]{%
+	\def\lastname{#1}%
+	\def\firstname{#2}%
+	\def\firstinit{#3}}
+\boldname{}{}{}
+
+% Patch new definitions
+\renewcommand{\mkbibnamegiven}[1]{%
+	\ifboolexpr{ ( test {\ifdefequal{\firstname}{\namepartgiven}} or test {\ifdefequal{\firstinit}{\namepartgiven}} ) and test {\ifdefequal{\lastname}{\namepartfamily}} }
+	{\mkbibbold{#1}}{#1}%
+}
+
+\renewcommand{\mkbibnamefamily}[1]{%
+	\ifboolexpr{ ( test {\ifdefequal{\firstname}{\namepartgiven}} or test {\ifdefequal{\firstinit}{\namepartgiven}} ) and test {\ifdefequal{\lastname}{\namepartfamily}} }
+	{\mkbibbold{#1}}{#1}%
+}
+
+\boldname{Name}{Surname}{}
+\usepackage[left=26mm,right=21mm,top=24.8mm,bottom=26.0mm]{geometry}
+
+% This is needed for dummy text. No purpose in the thesis itself
+\usepackage{lipsum} 
